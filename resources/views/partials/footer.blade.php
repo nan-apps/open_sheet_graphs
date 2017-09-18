@@ -2,13 +2,17 @@
   <div class="container">
     <div class="content has-text-centered">
       <p>
-        <strong>Padrón de femicidios</strong> por <a href="http://lavaca.org">lavaca.org</a>        
+        <strong>Padrón de femicidios</strong> por <a href="http://lavaca.org">lavaca.org</a>         
       </p>
+      
       <p>
-        <a class="icon" href="https://github.com/jgthms/bulma">
-          <i class="fa fa-github"></i>
-        </a>
+        <strong>Desarrollado</strong>         
+        con 
+        <a href="http://laravel.com">Laravel</a>,         
+        <a href="http://vuejs.org">Vue.js</a> y         
+        <a href="http://bulma.io">Bulma</a>        
       </p>
+      
     </div>
   </div>
 </footer>
