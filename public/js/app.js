@@ -1725,6 +1725,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -62477,9 +62480,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "aria-label": "main navigation"
     }
   }, [_vm._m(0), _vm._v(" "), _c('div', {
-    staticClass: "navbar-end"
+    staticClass: "navbar-brand has-text-centered-touch"
   }, [_c('div', {
-    staticClass: "navbar-item"
+    staticClass: "navbar-item container"
   }, [_c('div', {
     staticClass: "field is-grouped"
   }, [_c('p', {
@@ -62550,16 +62553,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   })])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "navbar-brand"
+    staticClass: "navbar-brand has-text-centered-touch"
   }, [_c('a', {
-    staticClass: "navbar-item",
+    staticClass: "navbar-item container",
     attrs: {
       "href": "/"
     }
   }, [_c('b', {
     staticClass: "title"
   }, [_vm._v("Padrón de femicidios")])]), _vm._v(" "), _c('button', {
-    staticClass: "button navbar-burger"
+    staticClass: "button navbar-burger is-hidden"
   }, [_c('span'), _vm._v(" "), _c('span'), _vm._v(" "), _c('span')])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('span', {
@@ -62652,7 +62655,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   }, [_vm._m(1)])])])])]), _vm._v(" "), _c('div', {
-    staticClass: "level-item"
+    staticClass: "level-item is-hidden-touch"
   }, [_c('p', {
     staticClass: "control tooltip",
     attrs: {

@@ -2,22 +2,23 @@
 	<div>
 
 		<nav class="navbar is-light" role="navigation" aria-label="main navigation">
+			
+			<div class="navbar-brand has-text-centered-touch">
+			    
+			    <a class="navbar-item container" href="/">
+			      	<b class="title" >Padrón de femicidios</b>		      	
+			    </a>
 
-
-		  <div class="navbar-brand">
-		    <a class="navbar-item" href="/">
-		      	<b class="title" >Padrón de femicidios</b>		      	
-		    </a>
-
-		    <button class="button navbar-burger">
-		      <span></span>
-		      <span></span>
-		      <span></span>
-		    </button>
-		  	</div>
-
-		  	<div class="navbar-end">
-		  		<div class="navbar-item">
+			    <button class="button navbar-burger is-hidden">
+			      <span></span>
+			      <span></span>
+			      <span></span>
+			    </button>
+			  	
+			</div>				
+			
+			<div class="navbar-brand has-text-centered-touch">
+		  		<div class="navbar-item container">
 		  			<div class="field is-grouped" >
 					    <p class="control">
 			            	<a class="button is-primary" href="#" @click="showModal = true" >
@@ -37,7 +38,9 @@
 			          	</p>
 		          	</div>
 	          	</div>
-		    </div>
+
+         </div> 	
+		    
 
 		</nav>
 	

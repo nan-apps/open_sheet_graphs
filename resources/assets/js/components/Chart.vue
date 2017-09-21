@@ -29,7 +29,7 @@
 							</div>												
 						</div>
 					</div>
-					<div class="level-item" >						
+					<div class="level-item is-hidden-touch" >						
 						<p class="control tooltip" :data-tooltip="maximized ? 'Minimizar' : 'Maximizar'">
 							<a class="button is-small">
 								<span class="icon is-small" @click="maximized = !maximized">
