@@ -5,7 +5,10 @@
 			
 			<div class="navbar-brand has-text-centered-touch">
 			    
-			    <a class="navbar-item container" href="/">
+			    <a class="navbar-item container is-hidden-desktop" href="/">
+			      	<b class="title" >Padrón de femicidios</b>		      	
+			    </a>
+			    <a class="navbar-item is-hidden-touch" href="/">
 			      	<b class="title" >Padrón de femicidios</b>		      	
 			    </a>
 
@@ -38,8 +41,7 @@
 			          	</p>
 		          	</div>
 	          	</div>
-
-         </div> 	
+         	</div> 	
 		    
 
 		</nav>

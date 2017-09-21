@@ -1736,6 +1736,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -62567,7 +62569,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', {
     staticClass: "navbar-brand has-text-centered-touch"
   }, [_c('a', {
-    staticClass: "navbar-item container",
+    staticClass: "navbar-item container is-hidden-desktop",
+    attrs: {
+      "href": "/"
+    }
+  }, [_c('b', {
+    staticClass: "title"
+  }, [_vm._v("Padrón de femicidios")])]), _vm._v(" "), _c('a', {
+    staticClass: "navbar-item is-hidden-touch",
     attrs: {
       "href": "/"
     }
