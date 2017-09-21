@@ -1728,6 +1728,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -62540,7 +62548,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: _vm.showModal ? 'is-active' : ''
   }, [_c('div', {
     staticClass: "modal-background"
-  }), _vm._v(" "), _vm._m(3), _vm._v(" "), _c('button', {
+  }), _vm._v(" "), _c('div', {
+    staticClass: "modal-card"
+  }, [_c('header', {
+    staticClass: "modal-card-head"
+  }, [_vm._m(3), _vm._v(" "), _c('button', {
     staticClass: "modal-close is-large",
     attrs: {
       "aria-label": "close"
@@ -62550,7 +62562,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.showModal = false
       }
     }
-  })])])])])
+  })]), _vm._v(" "), _vm._m(4)])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "navbar-brand has-text-centered-touch"
@@ -62585,8 +62597,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "fa fa-external-link"
   })]), _vm._v(" "), _c('span', [_vm._v("Abrir en drive")])])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "modal-content"
+  return _c('p', {
+    staticClass: "modal-card-title"
+  }, [_vm._v("\n\t\t\t\t      \tPadrón de femicidios"), _c('br'), _vm._v(" "), _c('span', {
+    staticClass: "has-text-primary"
+  }, [_vm._v("Nuestra base de datos (1974-2017)")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('section', {
+    staticClass: "modal-card-body"
   }, [_c('iframe', {
     staticStyle: {
       "width": "100%",

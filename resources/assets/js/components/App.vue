@@ -89,11 +89,19 @@
 				</div>
 
 				<div class="modal" :class="showModal ? 'is-active' : ''" >
-					<div class="modal-background"></div>
-					<div class="modal-content">
-				    	<iframe style="width:100%; height:500px;" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT7OG6Pf2JQqlMmQxXvWM_68yN7yyuF9jdyDTgOCvybO2jpFJyVXHElyD1hj6SoglECSBF7xx7z4K9J/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
-				  	</div>
-				  	<button @click="showModal = false" class="modal-close is-large" aria-label="close"></button>
+				  <div class="modal-background"></div>
+				  <div class="modal-card">
+				    <header class="modal-card-head">
+				      <p class="modal-card-title">
+				      	Padrón de femicidios<br/>
+				      	<span class="has-text-primary" >Nuestra base de datos (1974-2017)</span>
+				      </p>
+				      <button @click="showModal = false" class="modal-close is-large" aria-label="close"></button>
+				    </header>
+				    <section class="modal-card-body">
+				      <iframe style="width:100%; height:500px;" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT7OG6Pf2JQqlMmQxXvWM_68yN7yyuF9jdyDTgOCvybO2jpFJyVXHElyD1hj6SoglECSBF7xx7z4K9J/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+				    </section>				    
+				  </div>
 				</div>
 
 		    </div>
