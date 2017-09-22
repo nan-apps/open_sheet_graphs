@@ -5,3 +5,5 @@
 1. Laravel
 2. Vue y Vuex
 3. Chart.js
+
+### Versión especial para el "Padrón de Femicidios" de lavaca.org
