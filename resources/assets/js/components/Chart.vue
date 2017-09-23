@@ -107,13 +107,11 @@
 				
 				let groupedData = _.groupBy(data.values);					
 				_.forEach(groupedData, function(values, label) {	
-					if( values.length > 10 ){						
-						chartConf.data.labels.push( label );					
-						chartConf.data.datasets[0].data.push( values.length );						
-					}				  						
+					chartConf.data.labels.push( label );					
+					chartConf.data.datasets[0].data.push( values.length );
 				});
 
-				if( chartType == "doughnut" ){
+				if( chartType == "doughnut" || chartType == 'pie' ){
 					chartConf.options.scales.xAxes = [];
 					chartConf.options.scales.yAxes = [];
 				}

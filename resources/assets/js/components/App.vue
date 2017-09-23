@@ -6,7 +6,7 @@
 
 		  <div class="navbar-brand">
 		    <a class="navbar-item" href="/">
-		      	<b class="title" >Padrón de femicidios</b>		      	
+		      	<b class="title" >Open Sheet Graphs</b>		      			      	
 		    </a>
 
 		    <button class="button navbar-burger">
@@ -24,11 +24,11 @@
 			              		<span class="icon">
 			                		<i class="fa fa-folder-open"></i>
 			              		</span>
-		              			<span>Abrir padrón completo</span>
+		              			<span>Ver hoja de cálculos completa</span>
 			            	</a>
 			          	</p>
 			          	<p class="control">
-			            	<a target="_blank" class="button is-info" href="https://docs.google.com/spreadsheets/d/1kMFbg7QJuhL1GyagyKuq5_hEIhq--p57g23l9ouHs4w/edit?usp=sharing"  >
+			            	<a target="_blank" class="button is-info" :href="sheet_url"  >
 			              		<span class="icon">
 			                		<i class="fa fa-external-link"></i>
 			              		</span>
@@ -49,7 +49,7 @@
 				<div class="columns is-multiline">
 
 					    
-			    	<chart title="Por edad" 
+			    	<chart title="Colores" 
 			    		   :chart-type="'doughnut'" 
 			    		   :data="parsedData" 			    		   
 			    		   :column="0"
@@ -57,28 +57,24 @@
 			    		   >	      		
 			      	</chart>
 					    
-			    	<chart title="Por lugar" 
+			    	<chart title="Paises" 
 			    		   :chart-type="'bar'" 
 			    		   :data="parsedData" 			    		   
-			    		   :column="4"
+			    		   :column="1"
 			    		   :fetching-data="fetchingData">	      		
 			      	</chart>
-				
-
 				    
-			    	<chart title="Cómo" 
+			    	<chart title="Vegetales" 
 			    		   :chart-type="'bar'" 
 			    		   :data="parsedData" 			    		   
-			    		   :column="6"
+			    		   :column="2"
 			    		   :fetching-data="fetchingData">	      		
 			      	</chart>
-				
-
 				    
-			    	<chart title="Quién" 
-			    		   :chart-type="'bar'" 
+			    	<chart title="Frutas" 
+			    		   :chart-type="'pie'" 
 			    		   :data="parsedData" 			    		   
-			    		   :column="7"
+			    		   :column="3"
 			    		   :fetching-data="fetchingData">	      		
 			      	</chart>
 					
@@ -88,7 +84,7 @@
 				<div class="modal" :class="showModal ? 'is-active' : ''" >
 					<div class="modal-background"></div>
 					<div class="modal-content">
-				    	<iframe style="width:100%; height:500px;" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT7OG6Pf2JQqlMmQxXvWM_68yN7yyuF9jdyDTgOCvybO2jpFJyVXHElyD1hj6SoglECSBF7xx7z4K9J/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+				    	<iframe style="width:100%; height:500px;" :src="sheet_url"></iframe>
 				  	</div>
 				  	<button @click="showModal = false" class="modal-close is-large" aria-label="close"></button>
 				</div>
@@ -111,7 +107,7 @@
     		return {
     			showModal: false,
 				current_route: window.location.pathname,	    
-				
+				sheet_url: null
     		}
 		},
 		components: {
@@ -129,7 +125,8 @@
 
         ),
 		mounted: function() {	    
-		    this.$store.dispatch('LOAD_DATA');
+		    this.$store.dispatch('LOAD_DATA', this.$config.JSON_SHEET_URL);
+		    this.sheet_url = this.$config.SHEET_URL;
 		},    	    
 	}
 

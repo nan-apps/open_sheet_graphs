@@ -1,7 +1,7 @@
 export const parsedData = state => {	
 
-	let titlesColumns = ['B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
-	let titlesFields = ['B1', 'C1', 'D1', 'E1', 'F1', 'G1', 'H1', 'I1'];
+	let titlesColumns = ['A', 'B', 'C', 'D'];
+	let titlesFields = ['A1', 'B1', 'C1', 'D1'];
 	let data = [];
 
 	if( typeof state.rawData[Symbol.iterator] === 'function'  ){

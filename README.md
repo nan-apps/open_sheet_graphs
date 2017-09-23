@@ -1,5 +1,7 @@
 # Graficos a partir de un sheet en google drive
 
+La hoja de cálculo debe estar publicada
+
 ## Tecnologias
 
 1. Laravel
