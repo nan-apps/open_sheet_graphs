@@ -15,8 +15,13 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+import vueConfig from 'vue-config' 
+import config from './app_conf.js';
+Vue.use(vueConfig, config)
+
 import App from './components/App.vue';
 import store from './store/index';
+
 
 new Vue({
   	store,

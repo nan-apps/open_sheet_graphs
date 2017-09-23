@@ -2,11 +2,8 @@ import Vue from 'vue';
 import VueJsonp from 'vue-jsonp';
 Vue.use(VueJsonp);
 
-export const LOAD_DATA = ({ commit }) => {
-	commit( 'FETCHING_DATA', true  );
-
-	let url = SHEET_URL;
-
+export const LOAD_DATA = ({commit}, url) => {
+	
 	Vue.jsonp( url, { 
 		callbackQuery: 'callback', callbackName: 'myFunc' 
 	}).then(json => {

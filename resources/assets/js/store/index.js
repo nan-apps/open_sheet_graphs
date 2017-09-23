@@ -8,7 +8,7 @@ import * as actions from './actions';
 import * as getters from './getters';
 
 const store = new Vuex.Store({
-	strict: true,
+	strict: true,	
 	state: {		
 		rawData: {},
 		fetchingData: false
