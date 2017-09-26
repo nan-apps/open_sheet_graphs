@@ -63,7 +63,7 @@
 			    		   >	      		
 			      	</chart>
 					    
-			    	<chart title="Por lugar" 
+			    	<!-- <chart title="Por lugar" 
 			    		   :chart-type="'bar'" 
 			    		   :data="parsedData" 			    		   
 			    		   :column="5"
@@ -82,7 +82,7 @@
 			    		   :data="parsedData" 			    		   
 			    		   :column="8"
 			    		   :fetching-data="fetchingData">	      		
-			      	</chart>
+			      	</chart> -->
 					
 				  			  
 				</div>
