@@ -16,4 +16,6 @@ export const LOAD_DATA = ({commit}, url) => {
 
 }
 
-
+export const SET_COLUMNS = ({commit}, columns) => {	
+	commit( 'SET_COLUMNS', columns  );
+}

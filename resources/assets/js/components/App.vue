@@ -51,30 +51,26 @@
 					    
 			    	<chart title="Colores" 
 			    		   :chart-type="'doughnut'" 
-			    		   :data="parsedData" 			    		   
-			    		   :column="0"
+			    		   :data="getData('A')" 		
 			    		   :fetching-data="fetchingData"				    		   
 			    		   >	      		
 			      	</chart>
 					    
 			    	<chart title="Paises" 
 			    		   :chart-type="'bar'" 
-			    		   :data="parsedData" 			    		   
-			    		   :column="1"
+			    		   :data="getData('B')" 				    		   			    		   
 			    		   :fetching-data="fetchingData">	      		
 			      	</chart>
 				    
 			    	<chart title="Vegetales" 
 			    		   :chart-type="'bar'" 
-			    		   :data="parsedData" 			    		   
-			    		   :column="2"
+			    		   :data="getData('C')" 			    		   			    		   
 			    		   :fetching-data="fetchingData">	      		
 			      	</chart>
 				    
 			    	<chart title="Frutas" 
 			    		   :chart-type="'pie'" 
-			    		   :data="parsedData" 			    		   
-			    		   :column="3"
+			    		   :data="getData('D')" 					    		   
 			    		   :fetching-data="fetchingData">	      		
 			      	</chart>
 					
@@ -115,19 +111,26 @@
 		},
 		computed: Object.assign(
 
-            Vuex.mapState({
-                //data: state => state.rawData,                
-                fetchingData: state => state.fetchingData,
+            Vuex.mapState({                     
+                fetchingData: state => state.fetchingData
             }),
             Vuex.mapGetters([
 				'parsedData'
 			])
 
         ),
-		mounted: function() {	    
+		mounted: function() {	    	
+
+		    this.$store.dispatch('SET_COLUMNS', this.$config.COLUMNS);
 		    this.$store.dispatch('LOAD_DATA', this.$config.JSON_SHEET_URL);
 		    this.sheet_url = this.$config.SHEET_URL;
+
 		},    	    
+		methods:{
+			getData: function( column ){
+				return _.find(this.parsedData, function(d) { return d.column == column; });				
+			}   
+		}
 	}
 
 </script>

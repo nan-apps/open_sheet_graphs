@@ -11,7 +11,8 @@ const store = new Vuex.Store({
 	strict: true,	
 	state: {		
 		rawData: {},
-		fetchingData: false
+		fetchingData: false,
+		columns: []
 	},
 	getters,
 	mutations,

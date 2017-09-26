@@ -74,7 +74,7 @@
 				maximized: false,
 			}
 		},   		
-		props: ['chartType', 'data', 'title', 'column', 'fetchingData'],
+		props: ['chartType', 'data', 'title', 'fetchingData'],
 		components: {
 
 		},
@@ -82,11 +82,14 @@
 			this.ctx = $(this.$el).find("canvas")[0];	
 		}, 
 		watch: {
-			data: function ( newData ) {		    	
+			data: function ( newData ) {	
+
 				if( newData ){		    				    		
 					let defaultConf = jQuery.extend(true, {}, ChartDefaultConf); 		    		
-					this.draw( this.ctx, 
-						this.buildConf( defaultConf, this.chartType, newData[this.column] ) );
+					this.draw( 
+						this.ctx, 
+						this.buildConf(defaultConf, this.chartType, newData)
+				    );
 				}
 			}
 		},		
@@ -121,8 +124,8 @@
 			changeChartType: function(type) {				
 				let defaultConf = jQuery.extend(true, {}, ChartDefaultConf); 		    		
 				this.draw( this.ctx, 
-						   this.buildConf( defaultConf, type, this.data[this.column] ) );
-			}   
+						   this.buildConf(defaultConf, type, this.data) );
+			}
 
 		}, 
 			    

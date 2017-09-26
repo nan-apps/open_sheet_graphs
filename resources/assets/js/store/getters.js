@@ -1,11 +1,12 @@
 export const parsedData = state => {	
-
-	let titlesColumns = ['A', 'B', 'C', 'D'];
-	let titlesFields = ['A1', 'B1', 'C1', 'D1'];
+	
+	let titlesFields = state.columns ? state.columns.map( value =>{ return value+"1" }) : [];		
 	let data = [];
 
 	if( typeof state.rawData[Symbol.iterator] === 'function'  ){
+
 		let rawData = state.rawData;
+
 		rawData.forEach( ( item, index ) => {
 
 			let column = item.title.$t.replace(/[0-9]/g, "");
