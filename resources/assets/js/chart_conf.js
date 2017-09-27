@@ -24,6 +24,7 @@ export default {
         }]
     },
     options: {
+        legend: false,
         scales: {
         	xAxes: [{
                 ticks: {                	

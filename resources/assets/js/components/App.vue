@@ -54,35 +54,33 @@
 
 				<div class="columns is-multiline">
 
-					    
-			    	<chart title="Por edad" 
-			    		   :chart-type="'doughnut'" 
-			    		   :data="parsedData" 			    		   
-			    		   :column="1"
+					<chart title="Por edad" 
+			    		   :chart-type="'bar'" 
+			    		   :data="getData('B')" 		
 			    		   :fetching-data="fetchingData"				    		   
 			    		   >	      		
 			      	</chart>
-					    
-			    	<!-- <chart title="Por lugar" 
+
+			      	<chart title="Por lugar" 
 			    		   :chart-type="'bar'" 
-			    		   :data="parsedData" 			    		   
-			    		   :column="5"
-			    		   :fetching-data="fetchingData">	      		
+			    		   :data="getData('F')" 		
+			    		   :fetching-data="fetchingData"				    		   
+			    		   >	      		
 			      	</chart>
-				    
-			    	<chart title="Cómo" 
-			    		   :chart-type="'bar'" 
-			    		   :data="parsedData" 			    		   
-			    		   :column="7"
-			    		   :fetching-data="fetchingData">	      		
-			      	</chart>
-				    
-			    	<chart title="Quién" 
+
+			      	<chart title="Cómo" 
 			    		   :chart-type="'pie'" 
-			    		   :data="parsedData" 			    		   
-			    		   :column="8"
-			    		   :fetching-data="fetchingData">	      		
-			      	</chart> -->
+			    		   :data="getData('H')" 		
+			    		   :fetching-data="fetchingData"				    		   
+			    		   >	      		
+			      	</chart>
+
+			      	<chart title="Quién" 
+			    		   :chart-type="'pie'" 
+			    		   :data="getData('I')" 		
+			    		   :fetching-data="fetchingData"				    		   
+			    		   >	      		
+			      	</chart>
 					
 				  			  
 				</div>
@@ -131,19 +129,26 @@
 		},
 		computed: Object.assign(
 
-            Vuex.mapState({
-                //data: state => state.rawData,                
-                fetchingData: state => state.fetchingData,
+            Vuex.mapState({                     
+                fetchingData: state => state.fetchingData
             }),
             Vuex.mapGetters([
 				'parsedData'
 			])
 
         ),
-		mounted: function() {	    
+		mounted: function() {	    	
+
+		    this.$store.dispatch('SET_COLUMNS', this.$config.COLUMNS);
 		    this.$store.dispatch('LOAD_DATA', this.$config.JSON_SHEET_URL);
 		    this.sheet_url = this.$config.SHEET_URL;
+
 		},    	    
+		methods:{
+			getData: function( column ){
+				return _.find(this.parsedData, function(d) { return d.column == column; });				
+			}   
+		}
 	}
 
 </script>

@@ -74,7 +74,7 @@
 				maximized: false,
 			}
 		},   		
-		props: ['chartType', 'data', 'title', 'column', 'fetchingData'],
+		props: ['chartType', 'data', 'title', 'fetchingData'],
 		components: {
 
 		},
@@ -82,11 +82,14 @@
 			this.ctx = $(this.$el).find("canvas")[0];	
 		}, 
 		watch: {
-			data: function ( newData ) {		    	
+			data: function ( newData ) {	
+
 				if( newData ){		    				    		
 					let defaultConf = jQuery.extend(true, {}, ChartDefaultConf); 		    		
-					this.draw( this.ctx, 
-						this.buildConf( defaultConf, this.chartType, newData[this.column] ) );
+					this.draw( 
+						this.ctx, 
+						this.buildConf(defaultConf, this.chartType, newData)
+				    );
 				}
 			}
 		},		
@@ -107,8 +110,10 @@
 				
 				let groupedData = _.groupBy(data.values);					
 				_.forEach(groupedData, function(values, label) {	
-					chartConf.data.labels.push( label );					
-					chartConf.data.datasets[0].data.push( values.length );
+					if( values.length > 10 ){
+						chartConf.data.labels.push( label );					
+						chartConf.data.datasets[0].data.push( values.length );						
+					}
 				});
 
 				if( chartType == "doughnut" || chartType == 'pie' ){
@@ -121,8 +126,8 @@
 			changeChartType: function(type) {				
 				let defaultConf = jQuery.extend(true, {}, ChartDefaultConf); 		    		
 				this.draw( this.ctx, 
-						   this.buildConf( defaultConf, type, this.data[this.column] ) );
-			}   
+						   this.buildConf(defaultConf, type, this.data) );
+			}
 
 		}, 
 			    

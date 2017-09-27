@@ -1735,14 +1735,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -1761,14 +1753,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		Chart: __WEBPACK_IMPORTED_MODULE_1__Chart_vue___default.a
 	},
 	computed: Object.assign(__WEBPACK_IMPORTED_MODULE_0_vuex__["a" /* default */].mapState({
-		//data: state => state.rawData,                
 		fetchingData: function fetchingData(state) {
 			return state.fetchingData;
 		}
 	}), __WEBPACK_IMPORTED_MODULE_0_vuex__["a" /* default */].mapGetters(['parsedData'])),
 	mounted: function mounted() {
+
+		this.$store.dispatch('SET_COLUMNS', this.$config.COLUMNS);
 		this.$store.dispatch('LOAD_DATA', this.$config.JSON_SHEET_URL);
 		this.sheet_url = this.$config.SHEET_URL;
+	},
+	methods: {
+		getData: function getData(column) {
+			return _.find(this.parsedData, function (d) {
+				return d.column == column;
+			});
+		}
 	}
 });
 
@@ -1858,16 +1858,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			maximized: false
 		};
 	},
-	props: ['chartType', 'data', 'title', 'column', 'fetchingData'],
+	props: ['chartType', 'data', 'title', 'fetchingData'],
 	components: {},
 	mounted: function mounted() {
 		this.ctx = $(this.$el).find("canvas")[0];
 	},
 	watch: {
 		data: function data(newData) {
+
 			if (newData) {
 				var defaultConf = jQuery.extend(true, {}, __WEBPACK_IMPORTED_MODULE_1__chart_conf_js__["a" /* default */]);
-				this.draw(this.ctx, this.buildConf(defaultConf, this.chartType, newData[this.column]));
+				this.draw(this.ctx, this.buildConf(defaultConf, this.chartType, newData));
 			}
 		}
 	},
@@ -1887,8 +1888,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 			var groupedData = _.groupBy(data.values);
 			_.forEach(groupedData, function (values, label) {
-				chartConf.data.labels.push(label);
-				chartConf.data.datasets[0].data.push(values.length);
+				if (values.length > 10) {
+					chartConf.data.labels.push(label);
+					chartConf.data.datasets[0].data.push(values.length);
+				}
 			});
 
 			if (chartType == "doughnut" || chartType == 'pie') {
@@ -1900,7 +1903,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		},
 		changeChartType: function changeChartType(type) {
 			var defaultConf = jQuery.extend(true, {}, __WEBPACK_IMPORTED_MODULE_1__chart_conf_js__["a" /* default */]);
-			this.draw(this.ctx, this.buildConf(defaultConf, type, this.data[this.column]));
+			this.draw(this.ctx, this.buildConf(defaultConf, type, this.data));
 		}
 
 	}
@@ -62541,40 +62544,36 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "columns is-multiline"
   }, [_c('chart', {
     attrs: {
-      "title": "Colores",
-      "chart-type": 'doughnut',
-      "data": _vm.parsedData,
-      "column": 0,
-      "fetching-data": _vm.fetchingData
-    }
-  }), _vm._v(" "), _c('chart', {
-    attrs: {
-      "title": "Paises",
+      "title": "Por edad",
       "chart-type": 'bar',
-      "data": _vm.parsedData,
-      "column": 1,
+      "data": _vm.getData('B'),
       "fetching-data": _vm.fetchingData
     }
   }), _vm._v(" "), _c('chart', {
     attrs: {
-      "title": "Vegetales",
+      "title": "Por lugar",
       "chart-type": 'bar',
-      "data": _vm.parsedData,
-      "column": 2,
+      "data": _vm.getData('F'),
       "fetching-data": _vm.fetchingData
     }
   }), _vm._v(" "), _c('chart', {
     attrs: {
-      "title": "Frutas",
+      "title": "Cómo",
       "chart-type": 'pie',
-      "data": _vm.parsedData,
-      "column": 3,
+      "data": _vm.getData('H'),
+      "fetching-data": _vm.fetchingData
+    }
+  }), _vm._v(" "), _c('chart', {
+    attrs: {
+      "title": "Quién",
+      "chart-type": 'pie',
+      "data": _vm.getData('I'),
       "fetching-data": _vm.fetchingData
     }
   })], 1), _vm._v(" "), _c('div', {
     staticClass: "modal",
     class: _vm.showModal ? 'is-active' : ''
-  }, [_vm._v("\n<<<<<<< HEAD\n\t\t\t\t  "), _c('div', {
+  }, [_c('div', {
     staticClass: "modal-background"
   }), _vm._v(" "), _c('div', {
     staticClass: "modal-card"
@@ -62590,10 +62589,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.showModal = false
       }
     }
-  })]), _vm._v(" "), _vm._m(4)]), _vm._v("\n=======\n\t\t\t\t\t"), _c('div', {
-    staticClass: "modal-background"
-  }), _vm._v(" "), _c('div', {
-    staticClass: "modal-content"
+  })]), _vm._v(" "), _c('section', {
+    staticClass: "modal-card-body"
   }, [_c('iframe', {
     staticStyle: {
       "width": "100%",
@@ -62602,17 +62599,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "src": _vm.sheet_url
     }
-  })]), _vm._v(" "), _c('button', {
-    staticClass: "modal-close is-large",
-    attrs: {
-      "aria-label": "close"
-    },
-    on: {
-      "click": function($event) {
-        _vm.showModal = false
-      }
-    }
-  }), _vm._v("\n>>>>>>> 7b6b10e7badd7080c4134914ab03835a97599533\n\t\t\t\t")])])])])
+  })])])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "navbar-brand has-text-centered-touch"
@@ -62651,18 +62638,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("\n\t\t\t\t      \tPadrón de femicidios"), _c('br'), _vm._v(" "), _c('span', {
     staticClass: "has-text-primary"
   }, [_vm._v("Nuestra base de datos (1974-2017)")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('section', {
-    staticClass: "modal-card-body"
-  }, [_c('iframe', {
-    staticStyle: {
-      "width": "100%",
-      "height": "500px"
-    },
-    attrs: {
-      "src": "https://docs.google.com/spreadsheets/d/e/2PACX-1vT7OG6Pf2JQqlMmQxXvWM_68yN7yyuF9jdyDTgOCvybO2jpFJyVXHElyD1hj6SoglECSBF7xx7z4K9J/pubhtml?gid=0&single=true&widget=true&headers=false"
-    }
-  })])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -74265,9 +74240,11 @@ new Vue({
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+
 /* harmony default export */ __webpack_exports__["a"] = ({
-	JSON_SHEET_URL: 'https://spreadsheets.google.com/feeds/cells/1gX5rGAB-Q5LTearbVLaX5dQqiHVzF1j3PAVZ2XWGfyk/od6/public/basic?alt=json-in-script&callback=myFunc',
-	SHEET_URL: 'https://docs.google.com/spreadsheets/d/1gX5rGAB-Q5LTearbVLaX5dQqiHVzF1j3PAVZ2XWGfyk/edit?usp=drive_web'
+	JSON_SHEET_URL: 'https://spreadsheets.google.com/feeds/cells/1gX5rGAB-Q5LTearbVLaX5dQqiHVzF1j3PAVZ2XWGfyk/o61bw8x/public/basic?alt=json-in-script&callback=myFunc',
+	SHEET_URL: 'https://docs.google.com/spreadsheets/d/1gX5rGAB-Q5LTearbVLaX5dQqiHVzF1j3PAVZ2XWGfyk/pubhtml?gid=365031643&single=true&widget=true&headers=false',
+	COLUMNS: ['B', 'F', 'H', 'I']
 });
 
 /***/ }),
@@ -74349,6 +74326,7 @@ if (token) {
         }]
     },
     options: {
+        legend: false,
         scales: {
             xAxes: [{
                 ticks: {
@@ -74461,6 +74439,7 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_DATA", function() { return LOAD_DATA; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_COLUMNS", function() { return SET_COLUMNS; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__("./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_jsonp__ = __webpack_require__("./node_modules/vue-jsonp/dist/vue-jsonp.umd.js");
@@ -74484,6 +74463,12 @@ var LOAD_DATA = function LOAD_DATA(_ref, url) {
 	});
 };
 
+var SET_COLUMNS = function SET_COLUMNS(_ref2, columns) {
+	var commit = _ref2.commit;
+
+	commit('SET_COLUMNS', columns);
+};
+
 /***/ }),
 
 /***/ "./resources/assets/js/store/getters.js":
@@ -74494,12 +74479,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "parsedData", function() { return parsedData; });
 var parsedData = function parsedData(state) {
 
-	var titlesColumns = ['A', 'B', 'C', 'D'];
-	var titlesFields = ['A1', 'B1', 'C1', 'D1'];
+	var titlesFields = state.columns ? state.columns.map(function (value) {
+		return value + "1";
+	}) : [];
 	var data = [];
 
 	if (typeof state.rawData[Symbol.iterator] === 'function') {
+
 		var rawData = state.rawData;
+
 		rawData.forEach(function (item, index) {
 
 			var column = item.title.$t.replace(/[0-9]/g, "");
@@ -74551,7 +74539,8 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
 	strict: true,
 	state: {
 		rawData: {},
-		fetchingData: false
+		fetchingData: false,
+		columns: []
 	},
 	getters: __WEBPACK_IMPORTED_MODULE_4__getters__,
 	mutations: __WEBPACK_IMPORTED_MODULE_2__mutations__,
@@ -74570,6 +74559,7 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCHING_DATA", function() { return FETCHING_DATA; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_RAW_DATA", function() { return SET_RAW_DATA; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_COLUMNS", function() { return SET_COLUMNS; });
 var FETCHING_DATA = function FETCHING_DATA(state, isFetching) {
   state.fetchingData = isFetching;
 };
@@ -74578,6 +74568,10 @@ var SET_RAW_DATA = function SET_RAW_DATA(state, _ref) {
   var rawData = _ref.rawData;
 
   state.rawData = rawData;
+};
+
+var SET_COLUMNS = function SET_COLUMNS(state, columns) {
+  state.columns = columns;
 };
 
 /***/ }),
