@@ -4,6 +4,8 @@ Vue.use(VueJsonp);
 
 export const LOAD_DATA = ({commit}, url) => {
 	
+	commit( 'FETCHING_DATA', true  );
+
 	Vue.jsonp( url, { 
 		callbackQuery: 'callback', callbackName: 'myFunc' 
 	}).then(json => {
