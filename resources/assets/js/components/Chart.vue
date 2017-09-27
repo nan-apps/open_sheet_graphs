@@ -74,7 +74,8 @@
 				maximized: false,
 			}
 		},   		
-		props: ['chartType', 'data', 'title', 'fetchingData'],
+		props: ['chartType', 'data', 'title', 'fetchingData', 
+			    'showLegend', 'dataTreshHold'],
 		components: {
 
 		},
@@ -104,20 +105,27 @@
 				this.chart = new Chart( ctx, chartConf );									
 
 			},
-			buildConf: ( chartConf, chartType, data ) => {
+			buildConf: function( chartConf, chartType, data ){
 
+				var self = this;
 				chartConf.type = chartType;
 				
 				let groupedData = _.groupBy(data.values);					
 				_.forEach(groupedData, function(values, label) {	
-					chartConf.data.labels.push( label );					
-					chartConf.data.datasets[0].data.push( values.length );
+					if( !self.dataTreshHold || values.length > self.dataTreshHold ){
+						chartConf.data.labels.push( label );					
+						chartConf.data.datasets[0].data.push( values.length );
+					}
 				});
 
 				if( chartType == "doughnut" || chartType == 'pie' ){
 					chartConf.options.scales.xAxes = [];
 					chartConf.options.scales.yAxes = [];
 				}
+
+				chartConf.options.legend.display = self.showLegend;
+
+				console.log(chartConf);
 
 				return chartConf;
 			},

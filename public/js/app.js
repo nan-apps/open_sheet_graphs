@@ -1717,6 +1717,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -1840,7 +1847,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			maximized: false
 		};
 	},
-	props: ['chartType', 'data', 'title', 'fetchingData'],
+	props: ['chartType', 'data', 'title', 'fetchingData', 'showLegend', 'dataTreshHold'],
 	components: {},
 	mounted: function mounted() {
 		this.ctx = $(this.$el).find("canvas")[0];
@@ -1866,18 +1873,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		},
 		buildConf: function buildConf(chartConf, chartType, data) {
 
+			var self = this;
 			chartConf.type = chartType;
 
 			var groupedData = _.groupBy(data.values);
 			_.forEach(groupedData, function (values, label) {
-				chartConf.data.labels.push(label);
-				chartConf.data.datasets[0].data.push(values.length);
+				if (!self.dataTreshHold || values.length > self.dataTreshHold) {
+					chartConf.data.labels.push(label);
+					chartConf.data.datasets[0].data.push(values.length);
+				}
 			});
 
 			if (chartType == "doughnut" || chartType == 'pie') {
 				chartConf.options.scales.xAxes = [];
 				chartConf.options.scales.yAxes = [];
 			}
+
+			chartConf.options.legend.display = self.showLegend;
+
+			console.log(chartConf);
 
 			return chartConf;
 		},
@@ -62632,6 +62646,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "title": "Colores",
       "chart-type": 'doughnut',
       "data": _vm.getData('A'),
+      "show-legend": true,
+      "data-tresh-hold": 4,
       "fetching-data": _vm.fetchingData
     }
   }), _vm._v(" "), _c('chart', {
@@ -62639,6 +62655,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "title": "Paises",
       "chart-type": 'bar',
       "data": _vm.getData('B'),
+      "show-legend": false,
+      "data-tresh-hold": false,
       "fetching-data": _vm.fetchingData
     }
   }), _vm._v(" "), _c('chart', {
@@ -62646,6 +62664,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "title": "Vegetales",
       "chart-type": 'bar',
       "data": _vm.getData('C'),
+      "show-legend": false,
+      "data-tresh-hold": false,
       "fetching-data": _vm.fetchingData
     }
   }), _vm._v(" "), _c('chart', {
@@ -62653,6 +62673,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "title": "Frutas",
       "chart-type": 'pie',
       "data": _vm.getData('D'),
+      "show-legend": true,
+      "data-tresh-hold": false,
       "fetching-data": _vm.fetchingData
     }
   })], 1), _vm._v(" "), _c('div', {
@@ -74288,6 +74310,12 @@ if (token) {
         }]
     },
     options: {
+        legend: {
+            display: true,
+            labels: {
+                fontColor: 'rgb(255, 99, 132)'
+            }
+        },
         scales: {
             xAxes: [{
                 ticks: {

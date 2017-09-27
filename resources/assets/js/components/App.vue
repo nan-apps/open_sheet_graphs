@@ -51,29 +51,36 @@
 					    
 			    	<chart title="Colores" 
 			    		   :chart-type="'doughnut'" 
-			    		   :data="getData('A')" 		
+			    		   :data="getData('A')"
+			    		   :show-legend="true" 
+			    		   :data-tresh-hold="4"		
 			    		   :fetching-data="fetchingData"				    		   
 			    		   >	      		
 			      	</chart>
 					    
 			    	<chart title="Paises" 
 			    		   :chart-type="'bar'" 
-			    		   :data="getData('B')" 				    		   			    		   
+			    		   :data="getData('B')"
+			    		   :show-legend="false" 
+			    		   :data-tresh-hold="false" 				    		   			    		   
 			    		   :fetching-data="fetchingData">	      		
 			      	</chart>
 				    
 			    	<chart title="Vegetales" 
 			    		   :chart-type="'bar'" 
-			    		   :data="getData('C')" 			    		   			    		   
+			    		   :data="getData('C')"
+			    		   :show-legend="false" 
+			    		   :data-tresh-hold="false" 			    		   			    		   
 			    		   :fetching-data="fetchingData">	      		
 			      	</chart>
 				    
 			    	<chart title="Frutas" 
 			    		   :chart-type="'pie'" 
-			    		   :data="getData('D')" 					    		   
+			    		   :data="getData('D')"
+			    		   :show-legend="true" 
+			    		   :data-tresh-hold="false" 					    		   
 			    		   :fetching-data="fetchingData">	      		
 			      	</chart>
-					
 				  			  
 				</div>
 

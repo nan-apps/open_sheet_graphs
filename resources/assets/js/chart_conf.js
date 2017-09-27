@@ -24,6 +24,12 @@ export default {
         }]
     },
     options: {
+        legend: {
+            display: true,
+            labels: {
+                fontColor: 'rgb(255, 99, 132)'
+            }
+        },
         scales: {
         	xAxes: [{
                 ticks: {                	
