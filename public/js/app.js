@@ -74413,6 +74413,8 @@ var LOAD_DATA = function LOAD_DATA(_ref, url) {
 	var commit = _ref.commit;
 
 
+	commit('FETCHING_DATA', true);
+
 	__WEBPACK_IMPORTED_MODULE_0_vue___default.a.jsonp(url, {
 		callbackQuery: 'callback', callbackName: 'myFunc'
 	}).then(function (json) {
