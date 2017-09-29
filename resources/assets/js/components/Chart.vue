@@ -63,7 +63,7 @@
 
 <script>
 
-	import Chart from 'chart.js';
+	import Chart from 'chart.js';	
 	import ChartDefaultConf from '../chart_conf.js';
 
 	export default { 
@@ -75,7 +75,7 @@
 			}
 		},   		
 		props: ['chartType', 'data', 'title', 'fetchingData', 
-			    'showLegend', 'dataTreshHold'],
+			    'showLegend', 'dataTreshHold', 'showLabels'],
 		components: {
 
 		},
@@ -124,8 +124,7 @@
 				}
 
 				chartConf.options.legend.display = self.showLegend;
-
-				console.log(chartConf);
+				chartConf.options.plugins.datalabels.display = self.showLabels;
 
 				return chartConf;
 			},

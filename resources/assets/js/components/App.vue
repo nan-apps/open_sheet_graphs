@@ -53,6 +53,7 @@
 			    		   :chart-type="'doughnut'" 
 			    		   :data="getData('A')"
 			    		   :show-legend="true" 
+			    		   :show-labels="true"
 			    		   :data-tresh-hold="4"		
 			    		   :fetching-data="fetchingData"				    		   
 			    		   >	      		
@@ -62,6 +63,7 @@
 			    		   :chart-type="'bar'" 
 			    		   :data="getData('B')"
 			    		   :show-legend="false" 
+			    		   :show-labels="false"
 			    		   :data-tresh-hold="false" 				    		   			    		   
 			    		   :fetching-data="fetchingData">	      		
 			      	</chart>
@@ -70,6 +72,7 @@
 			    		   :chart-type="'bar'" 
 			    		   :data="getData('C')"
 			    		   :show-legend="false" 
+			    		   :show-labels="true"
 			    		   :data-tresh-hold="false" 			    		   			    		   
 			    		   :fetching-data="fetchingData">	      		
 			      	</chart>
@@ -78,6 +81,7 @@
 			    		   :chart-type="'pie'" 
 			    		   :data="getData('D')"
 			    		   :show-legend="true" 
+			    		   :show-labels="true"
 			    		   :data-tresh-hold="false" 					    		   
 			    		   :fetching-data="fetchingData">	      		
 			      	</chart>

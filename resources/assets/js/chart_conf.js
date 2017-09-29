@@ -1,6 +1,9 @@
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+                             
 export default {	
 	type: '',
-	responsive: true,					
+	responsive: true,	
+    plugins:[ ChartDataLabels ],				
 	data:{
 		labels: [],
         datasets: [{
@@ -24,6 +27,11 @@ export default {
         }]
     },
     options: {
+        plugins: {
+            datalabels: {
+                display: true
+            }
+        },
         legend: {
             display: true,
             labels: {
