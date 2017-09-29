@@ -1,6 +1,9 @@
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+                             
 export default {	
 	type: '',
-	responsive: true,					
+	responsive: true,	
+    plugins:[ ChartDataLabels ],				
 	data:{
 		labels: [],
         datasets: [{
@@ -47,6 +50,20 @@ export default {
         }]
     },
     options: {
+        plugins: {
+            datalabels: {
+                display: true,
+                anchor: 'end',
+                borderColor: 'white',
+                borderRadius: 25,
+                borderWidth: 2,
+                color: 'white',
+                backgroundColor: 'black',
+                formatter: function(value, context) {
+                 //   return context.dataIndex + ': ' + Math.round(value*100) + '%';
+                }
+            }
+        },
         legend: {
             display: true,
             labels: {

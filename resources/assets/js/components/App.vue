@@ -59,8 +59,10 @@
 			    		   :data="getData('B')" 		
 			    		   :fetching-data="fetchingData"
 			    		   :show-legend="false" 
+			    		   :show-labels="false"
 			    		   :data-tresh-hold="20"				    		   
 			    		   >	      		
+
 			      	</chart>
 
 			      	<chart title="Por lugar" 
@@ -68,8 +70,10 @@
 			    		   :data="getData('F')" 		
 			    		   :fetching-data="fetchingData"
 			    		   :show-legend="false" 
+			    		   :show-labels="false"
 			    		   :data-tresh-hold="10"				    		   
 			    		   >	      		
+
 			      	</chart>
 
 			      	<chart title="Cómo" 
@@ -77,6 +81,7 @@
 			    		   :data="getData('H')" 		
 			    		   :fetching-data="fetchingData"
 			    		   :show-legend="true" 
+			    		   :show-labels="true"
 			    		   :data-tresh-hold="10"				    		   
 			    		   >	      		
 			      	</chart>
@@ -86,6 +91,7 @@
 			    		   :data="getData('I')" 		
 			    		   :fetching-data="fetchingData"
 			    		   :show-legend="true" 
+			    		   :show-labels="true"
 			    		   :data-tresh-hold="10"				    		   
 			    		   >	      		
 			      	</chart>
