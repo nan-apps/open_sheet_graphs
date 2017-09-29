@@ -1735,6 +1735,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -1858,7 +1865,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			maximized: false
 		};
 	},
-	props: ['chartType', 'data', 'title', 'fetchingData'],
+	props: ['chartType', 'data', 'title', 'fetchingData', 'showLegend', 'dataTreshHold'],
 	components: {},
 	mounted: function mounted() {
 		this.ctx = $(this.$el).find("canvas")[0];
@@ -1884,11 +1891,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		},
 		buildConf: function buildConf(chartConf, chartType, data) {
 
+			var self = this;
 			chartConf.type = chartType;
 
 			var groupedData = _.groupBy(data.values);
 			_.forEach(groupedData, function (values, label) {
-				if (values.length > 10) {
+				if (!self.dataTreshHold || values.length > self.dataTreshHold) {
 					chartConf.data.labels.push(label);
 					chartConf.data.datasets[0].data.push(values.length);
 				}
@@ -1898,6 +1906,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				chartConf.options.scales.xAxes = [];
 				chartConf.options.scales.yAxes = [];
 			}
+
+			chartConf.options.legend.display = self.showLegend;
+
+			console.log(chartConf);
 
 			return chartConf;
 		},
@@ -62547,28 +62559,36 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "title": "Por edad",
       "chart-type": 'bar',
       "data": _vm.getData('B'),
-      "fetching-data": _vm.fetchingData
+      "fetching-data": _vm.fetchingData,
+      "show-legend": false,
+      "data-tresh-hold": 20
     }
   }), _vm._v(" "), _c('chart', {
     attrs: {
       "title": "Por lugar",
       "chart-type": 'bar',
       "data": _vm.getData('F'),
-      "fetching-data": _vm.fetchingData
+      "fetching-data": _vm.fetchingData,
+      "show-legend": false,
+      "data-tresh-hold": 10
     }
   }), _vm._v(" "), _c('chart', {
     attrs: {
       "title": "Cómo",
       "chart-type": 'pie',
       "data": _vm.getData('H'),
-      "fetching-data": _vm.fetchingData
+      "fetching-data": _vm.fetchingData,
+      "show-legend": true,
+      "data-tresh-hold": 10
     }
   }), _vm._v(" "), _c('chart', {
     attrs: {
       "title": "Quién",
       "chart-type": 'pie',
       "data": _vm.getData('I'),
-      "fetching-data": _vm.fetchingData
+      "fetching-data": _vm.fetchingData,
+      "show-legend": true,
+      "data-tresh-hold": 10
     }
   })], 1), _vm._v(" "), _c('div', {
     staticClass: "modal",
@@ -74320,13 +74340,18 @@ if (token) {
         datasets: [{
             label: '',
             data: [],
-            backgroundColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)', 'rgba(255, 100, 54, 1)', 'rgba(255, 159, 4, 1)', 'rgba(255, 15, 6, 1)', 'rgba(255, 59, 64, 1)', 'rgba(255, 99, 244, 1)'],
+            backgroundColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)', 'rgba(255, 100, 54, 1)', 'rgba(255, 159, 4, 1)', 'rgba(255, 15, 6, 1)', 'rgba(255, 59, 64, 1)', 'rgba(255, 99, 24, 1)', 'rgba(255, 100, 44, 1)', 'rgba(255, 190, 14, 1)', 'rgba(12, 167, 34, 1)', 'rgba(23, 66, 214, 1)', 'rgba(100, 77, 248, 1)', 'rgba(101, 19, 102, 1)', 'rgba(123, 91, 101, 1)', 'rgba(23, 9, 100, 1)', 'rgba(28, 199, 244, 1)', 'rgba(29, 219, 244, 1)', 'rgba(91, 100, 244, 1)', 'rgba(32, 98, 244, 1)', 'rgba(36, 11, 244, 1)', 'rgba(78, 2, 76, 1)', 'rgba(45, 3, 1, 1)', 'rgba(21, 34, 98, 1)', 'rgba(32, 54, 45, 1)', 'rgba(54, 15, 21, 1)', 'rgba(65, 17, 12, 1)', 'rgba(12, 19, 99, 1)', 'rgba(67, 20, 23, 1)', 'rgba(2, 21, 11, 1)', 'rgba(11, 21, 100, 1)'],
             borderColor: [],
             borderWidth: 1
         }]
     },
     options: {
-        legend: false,
+        legend: {
+            display: true,
+            labels: {
+                fontColor: 'rgb(255, 99, 132)'
+            }
+        },
         scales: {
             xAxes: [{
                 ticks: {

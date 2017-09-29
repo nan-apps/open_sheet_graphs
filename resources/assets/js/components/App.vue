@@ -57,31 +57,38 @@
 					<chart title="Por edad" 
 			    		   :chart-type="'bar'" 
 			    		   :data="getData('B')" 		
-			    		   :fetching-data="fetchingData"				    		   
+			    		   :fetching-data="fetchingData"
+			    		   :show-legend="false" 
+			    		   :data-tresh-hold="20"				    		   
 			    		   >	      		
 			      	</chart>
 
 			      	<chart title="Por lugar" 
 			    		   :chart-type="'bar'" 
 			    		   :data="getData('F')" 		
-			    		   :fetching-data="fetchingData"				    		   
+			    		   :fetching-data="fetchingData"
+			    		   :show-legend="false" 
+			    		   :data-tresh-hold="10"				    		   
 			    		   >	      		
 			      	</chart>
 
 			      	<chart title="Cómo" 
 			    		   :chart-type="'pie'" 
 			    		   :data="getData('H')" 		
-			    		   :fetching-data="fetchingData"				    		   
+			    		   :fetching-data="fetchingData"
+			    		   :show-legend="true" 
+			    		   :data-tresh-hold="10"				    		   
 			    		   >	      		
 			      	</chart>
 
 			      	<chart title="Quién" 
 			    		   :chart-type="'pie'" 
 			    		   :data="getData('I')" 		
-			    		   :fetching-data="fetchingData"				    		   
+			    		   :fetching-data="fetchingData"
+			    		   :show-legend="true" 
+			    		   :data-tresh-hold="10"				    		   
 			    		   >	      		
 			      	</chart>
-					
 				  			  
 				</div>
 
