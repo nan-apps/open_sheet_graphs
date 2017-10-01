@@ -59,9 +59,10 @@
 			    		   :data="getData('B')" 		
 			    		   :fetching-data="fetchingData"
 			    		   :show-legend="false" 
-			    		   :show-labels="false"
+			    		   :show-percents="false"
 			    		   :data-tresh-hold="20"				    		   
 			    		   >	      		
+
 
 			      	</chart>
 
@@ -70,10 +71,9 @@
 			    		   :data="getData('F')" 		
 			    		   :fetching-data="fetchingData"
 			    		   :show-legend="false" 
-			    		   :show-labels="false"
+			    		   :show-percents="false"
 			    		   :data-tresh-hold="10"				    		   
-			    		   >	      		
-
+			    		   >
 			      	</chart>
 
 			      	<chart title="Cómo" 
@@ -81,9 +81,10 @@
 			    		   :data="getData('H')" 		
 			    		   :fetching-data="fetchingData"
 			    		   :show-legend="true" 
-			    		   :show-labels="true"
+			    		   :show-percents="true"
+			    		   :total-rows="totalRows"
 			    		   :data-tresh-hold="10"				    		   
-			    		   >	      		
+			    		   >
 			      	</chart>
 
 			      	<chart title="Quién" 
@@ -91,9 +92,11 @@
 			    		   :data="getData('I')" 		
 			    		   :fetching-data="fetchingData"
 			    		   :show-legend="true" 
-			    		   :show-labels="true"
+			    		   :show-percents="true"
+			    		   :total-rows="totalRows"
 			    		   :data-tresh-hold="10"				    		   
 			    		   >	      		
+
 			      	</chart>
 				  			  
 				</div>
@@ -146,7 +149,7 @@
                 fetchingData: state => state.fetchingData
             }),
             Vuex.mapGetters([
-				'parsedData'
+				'parsedData', 'totalRows'
 			])
 
         ),

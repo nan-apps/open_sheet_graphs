@@ -1748,6 +1748,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -1769,7 +1772,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		fetchingData: function fetchingData(state) {
 			return state.fetchingData;
 		}
-	}), __WEBPACK_IMPORTED_MODULE_0_vuex__["a" /* default */].mapGetters(['parsedData'])),
+	}), __WEBPACK_IMPORTED_MODULE_0_vuex__["a" /* default */].mapGetters(['parsedData', 'totalRows'])),
 	mounted: function mounted() {
 
 		this.$store.dispatch('SET_COLUMNS', this.$config.COLUMNS);
@@ -1871,7 +1874,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			maximized: false
 		};
 	},
-	props: ['chartType', 'data', 'title', 'fetchingData', 'showLegend', 'dataTreshHold', 'showLabels'],
+	props: ['chartType', 'data', 'title', 'fetchingData', 'showLegend', 'dataTreshHold', 'showPercents', 'totalRows'],
 	components: {},
 	mounted: function mounted() {
 		this.ctx = $(this.$el).find("canvas")[0];
@@ -1914,7 +1917,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			}
 
 			chartConf.options.legend.display = self.showLegend;
-			chartConf.options.plugins.datalabels.display = self.showLabels;
+			chartConf.options.plugins.datalabels.display = self.showPercents;
+
+			if (self.showPercents && self.totalRows) {
+				chartConf.options.plugins.datalabels.formatter = function (value, context) {
+					return Math.round(value / self.totalRows * 100) + '%';
+				};
+			}
 
 			return chartConf;
 		},
@@ -63206,7 +63215,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "data": _vm.getData('B'),
       "fetching-data": _vm.fetchingData,
       "show-legend": false,
-      "show-labels": false,
+      "show-percents": false,
       "data-tresh-hold": 20
     }
   }), _vm._v(" "), _c('chart', {
@@ -63216,7 +63225,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "data": _vm.getData('F'),
       "fetching-data": _vm.fetchingData,
       "show-legend": false,
-      "show-labels": false,
+      "show-percents": false,
       "data-tresh-hold": 10
     }
   }), _vm._v(" "), _c('chart', {
@@ -63226,7 +63235,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "data": _vm.getData('H'),
       "fetching-data": _vm.fetchingData,
       "show-legend": true,
-      "show-labels": true,
+      "show-percents": true,
+      "total-rows": _vm.totalRows,
       "data-tresh-hold": 10
     }
   }), _vm._v(" "), _c('chart', {
@@ -63236,7 +63246,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "data": _vm.getData('I'),
       "fetching-data": _vm.fetchingData,
       "show-legend": true,
-      "show-labels": true,
+      "show-percents": true,
+      "total-rows": _vm.totalRows,
       "data-tresh-hold": 10
     }
   })], 1), _vm._v(" "), _c('div', {
@@ -75008,10 +75019,7 @@ if (token) {
                 borderRadius: 25,
                 borderWidth: 2,
                 color: 'white',
-                backgroundColor: 'black',
-                formatter: function formatter(value, context) {
-                    //   return context.dataIndex + ': ' + Math.round(value*100) + '%';
-                }
+                backgroundColor: 'black'
             }
         },
         legend: {
@@ -75172,6 +75180,7 @@ var SET_COLUMNS = function SET_COLUMNS(_ref2, columns) {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "parsedData", function() { return parsedData; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "totalRows", function() { return totalRows; });
 var parsedData = function parsedData(state) {
 
 	var titlesFields = state.columns ? state.columns.map(function (value) {
@@ -75207,6 +75216,34 @@ var parsedData = function parsedData(state) {
 	}
 
 	return data;
+};
+
+var totalRows = function totalRows(state) {
+
+	var titlesFields = state.columns ? state.columns.map(function (value) {
+		return value + "1";
+	}) : [];
+	var rows = 0;
+	var sumUniqueColumn = null;
+
+	if (typeof state.rawData[Symbol.iterator] === 'function') {
+
+		var rawData = state.rawData;
+
+		rawData.forEach(function (item, index) {
+
+			if (!_.includes(titlesFields, item.title.$t)) {
+				//es dato				
+				var column = item.title.$t.replace(/[0-9]/g, "");
+				if (!sumUniqueColumn || column == sumUniqueColumn) {
+					sumUniqueColumn = column;
+					rows++;
+				}
+			}
+		});
+	}
+
+	return rows;
 };
 
 /***/ }),

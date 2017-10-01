@@ -75,7 +75,7 @@
 			}
 		},   		
 		props: ['chartType', 'data', 'title', 'fetchingData', 
-			    'showLegend', 'dataTreshHold', 'showLabels'],
+			    'showLegend', 'dataTreshHold', 'showPercents', 'totalRows'],
 		components: {
 
 		},
@@ -107,7 +107,7 @@
 			},
 			buildConf: function( chartConf, chartType, data ){
 
-				var self = this;
+				var self = this;				
 				chartConf.type = chartType;
 				
 				let groupedData = _.groupBy(data.values);					
@@ -124,7 +124,13 @@
 				}
 
 				chartConf.options.legend.display = self.showLegend;
-				chartConf.options.plugins.datalabels.display = self.showLabels;
+				chartConf.options.plugins.datalabels.display = self.showPercents;
+				
+				if( self.showPercents && self.totalRows ){					
+					chartConf.options.plugins.datalabels.formatter = (value, context) => {						
+	                    return Math.round( (value / self.totalRows) *100) + '%';
+	                }
+				}
 
 				return chartConf;
 			},

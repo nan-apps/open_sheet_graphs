@@ -46,7 +46,7 @@ export default {
                 'rgba(11, 21, 100, 1)',
             ],
             borderColor: [],
-            borderWidth: 1
+            borderWidth: 1,            
         }]
     },
     options: {
@@ -58,10 +58,7 @@ export default {
                 borderRadius: 25,
                 borderWidth: 2,
                 color: 'white',
-                backgroundColor: 'black',
-                formatter: function(value, context) {
-                 //   return context.dataIndex + ': ' + Math.round(value*100) + '%';
-                }
+                backgroundColor: 'black'
             }
         },
         legend: {

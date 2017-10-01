@@ -35,3 +35,32 @@ export const parsedData = state => {
 	return data;
 
 }
+
+export const totalRows = state => {	
+	
+	let titlesFields = state.columns ? state.columns.map( value =>{ return value+"1" }) : [];		
+	let rows = 0;
+	let sumUniqueColumn = null;
+
+	if( typeof state.rawData[Symbol.iterator] === 'function'  ){
+
+		let rawData = state.rawData;
+
+		rawData.forEach( ( item, index ) => {
+
+			if(!_.includes(titlesFields, item.title.$t)){					
+				//es dato				
+				let column = item.title.$t.replace(/[0-9]/g, "");			
+				if( !sumUniqueColumn || column == sumUniqueColumn ){					
+					sumUniqueColumn = column;
+					rows++;
+				}
+			}
+
+		});
+
+	}
+
+	return rows;
+
+}
