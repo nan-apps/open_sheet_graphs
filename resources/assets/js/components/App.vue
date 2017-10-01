@@ -53,8 +53,9 @@
 			    		   :chart-type="'doughnut'" 
 			    		   :data="getData('A')"
 			    		   :show-legend="true" 
-			    		   :show-labels="true"
-			    		   :data-tresh-hold="4"		
+			    		   :show-percents="true"
+			    		   :total-rows="totalRows"			    		   
+			    		   :data-tresh-hold="false"		
 			    		   :fetching-data="fetchingData"				    		   
 			    		   >	      		
 			      	</chart>
@@ -63,7 +64,7 @@
 			    		   :chart-type="'bar'" 
 			    		   :data="getData('B')"
 			    		   :show-legend="false" 
-			    		   :show-labels="false"
+			    		   :show-percents="false"
 			    		   :data-tresh-hold="false" 				    		   			    		   
 			    		   :fetching-data="fetchingData">	      		
 			      	</chart>
@@ -72,7 +73,7 @@
 			    		   :chart-type="'bar'" 
 			    		   :data="getData('C')"
 			    		   :show-legend="false" 
-			    		   :show-labels="true"
+			    		   :show-percents="false"
 			    		   :data-tresh-hold="false" 			    		   			    		   
 			    		   :fetching-data="fetchingData">	      		
 			      	</chart>
@@ -81,7 +82,8 @@
 			    		   :chart-type="'pie'" 
 			    		   :data="getData('D')"
 			    		   :show-legend="true" 
-			    		   :show-labels="true"
+			    		   :show-percents="true"
+			    		   :total-rows="totalRows"
 			    		   :data-tresh-hold="false" 					    		   
 			    		   :fetching-data="fetchingData">	      		
 			      	</chart>
@@ -126,7 +128,7 @@
                 fetchingData: state => state.fetchingData
             }),
             Vuex.mapGetters([
-				'parsedData'
+				'parsedData', 'totalRows'
 			])
 
         ),

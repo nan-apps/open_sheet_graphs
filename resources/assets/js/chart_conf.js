@@ -23,13 +23,19 @@ export default {
                 'rgba(255, 99, 244, 1)',
             ],
             borderColor: [],
-            borderWidth: 1
+            borderWidth: 1,            
         }]
     },
     options: {
         plugins: {
             datalabels: {
-                display: true
+                display: true,
+                anchor: 'end',
+                borderColor: 'white',
+                borderRadius: 25,
+                borderWidth: 2,
+                color: 'white',
+                backgroundColor: 'black'
             }
         },
         legend: {
