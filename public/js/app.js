@@ -75095,13 +75095,11 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ "./resources/assets/js/store/actions.js":
+/***/ "./resources/assets/js/services.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_DATA", function() { return LOAD_DATA; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_COLUMNS", function() { return SET_COLUMNS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getDataFromApi; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__("./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_jsonp__ = __webpack_require__("./node_modules/vue-jsonp/dist/vue-jsonp.umd.js");
@@ -75110,15 +75108,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_jsonp___default.a);
 
+var getDataFromApi = function getDataFromApi(url) {
+
+	return __WEBPACK_IMPORTED_MODULE_0_vue___default.a.jsonp(url, {
+		callbackQuery: 'callback', callbackName: 'myFunc'
+	});
+};
+
+/***/ }),
+
+/***/ "./resources/assets/js/store/actions.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOAD_DATA", function() { return LOAD_DATA; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_COLUMNS", function() { return SET_COLUMNS; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services__ = __webpack_require__("./resources/assets/js/services.js");
+
+
 var LOAD_DATA = function LOAD_DATA(_ref, url) {
 	var commit = _ref.commit;
 
 
 	commit('FETCHING_DATA', true);
 
-	__WEBPACK_IMPORTED_MODULE_0_vue___default.a.jsonp(url, {
-		callbackQuery: 'callback', callbackName: 'myFunc'
-	}).then(function (json) {
+	__WEBPACK_IMPORTED_MODULE_0__services__["a" /* getDataFromApi */](url).then(function (json) {
 		commit('SET_RAW_DATA', { rawData: json.feed.entry });
 		commit('FETCHING_DATA', false);
 	}).catch(function (err) {

@@ -1,13 +1,16 @@
 <footer class="footer">
   <div class="container">
     <div class="content has-text-centered">
-      <p>
-        <strong>Padrón de femicidios</strong> por <a target="_blank" href="http://lavaca.org">lavaca.org</a>         
-      </p>
       
       <p>
-        <strong>Desarrollado</strong>         
-        con 
+        <strong>Desarrollado con <i class="fa fa-heart"></i></strong> por
+        <a target="_blank" href="http://nan-apps.com">
+          nan-apps
+        </a>
+      </p>
+
+      <p>        
+        <strong>Con </strong>
         <a target="_blank" href="http://laravel.com">Laravel</a>,         
         <a target="_blank" href="http://vuejs.org">Vue.js</a> y         
         <a target="_blank" href="http://bulma.io">Bulma</a>        
