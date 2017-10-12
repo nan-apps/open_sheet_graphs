@@ -14,7 +14,7 @@
       </p>
 
       <p>
-        <a target="_blank" href="https://github.com/nan-apps/open_sheet_graphs">
+        <a target="_blank" href="https://github.com/nan-apps/open_sheet_graphs/tree/lavaca">
           <span class="icon" ><i class="fa fa-github"></i></span> Código
         </a>
       </p>
