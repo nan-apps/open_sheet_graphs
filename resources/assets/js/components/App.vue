@@ -75,30 +75,7 @@
 			    		   :data-tresh-hold="1"				    		   
 			    		   >
 			      	</chart>
-
-			      	<chart title="Cómo" 
-			    		   :chart-type="'pie'" 
-			    		   :data="getData('G')" 		
-			    		   :fetching-data="fetchingData"
-			    		   :show-legend="true" 
-			    		   :show-percents="true"
-			    		   :total-rows="totalRows"
-			    		   :data-tresh-hold="1"				    		   
-			    		   >
-			      	</chart>
-
-			      	<chart title="Quién" 
-			    		   :chart-type="'pie'" 
-			    		   :data="getData('H')" 		
-			    		   :fetching-data="fetchingData"
-			    		   :show-legend="true" 
-			    		   :show-percents="true"
-			    		   :total-rows="totalRows"
-			    		   :data-tresh-hold="1"				    		   
-			    		   >	      		
-
-			      	</chart>
-				  			  
+			      				  			  
 				</div>
 
 				<div class="modal" :class="showModal ? 'is-active' : ''" >

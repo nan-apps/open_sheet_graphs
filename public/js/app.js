@@ -1728,29 +1728,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -64483,28 +64460,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "show-percents": false,
       "data-tresh-hold": 1
     }
-  }), _vm._v(" "), _c('chart', {
-    attrs: {
-      "title": "Cómo",
-      "chart-type": 'pie',
-      "data": _vm.getData('G'),
-      "fetching-data": _vm.fetchingData,
-      "show-legend": true,
-      "show-percents": true,
-      "total-rows": _vm.totalRows,
-      "data-tresh-hold": 1
-    }
-  }), _vm._v(" "), _c('chart', {
-    attrs: {
-      "title": "Quién",
-      "chart-type": 'pie',
-      "data": _vm.getData('H'),
-      "fetching-data": _vm.fetchingData,
-      "show-legend": true,
-      "show-percents": true,
-      "total-rows": _vm.totalRows,
-      "data-tresh-hold": 1
-    }
   })], 1), _vm._v(" "), _c('div', {
     staticClass: "modal",
     class: _vm.showModal ? 'is-active' : ''
@@ -76179,7 +76134,7 @@ new Vue({
 /* harmony default export */ __webpack_exports__["a"] = ({
 	JSON_SHEET_URL: 'https://spreadsheets.google.com/feeds/cells/1gX5rGAB-Q5LTearbVLaX5dQqiHVzF1j3PAVZ2XWGfyk/2/public/basic?alt=json-in-script&callback=myFunc',
 	SHEET_URL: 'https://docs.google.com/spreadsheets/d/1gX5rGAB-Q5LTearbVLaX5dQqiHVzF1j3PAVZ2XWGfyk/pubhtml?gid=365031643&single=true&widget=true&headers=false',
-	COLUMNS: ['B', 'E', 'G', 'H']
+	COLUMNS: ['B', 'E']
 });
 
 /***/ }),
