@@ -12,9 +12,9 @@
     "devDependencies": {
         "axios": "^0.16.2",
         "bootstrap-sass": "^3.3.7",
-        "bulma": "^0.5.2",
+        "bulma": "^0.5.3",
         "bulma-tooltip": "0.0.4",
-        "chart.js": "^2.7.0",
+        "chart.js": "^2.7.2",
         "chartjs-plugin-datalabels": "^0.1.0",
         "cross-env": "^5.0.1",
         "font-awesome": "^4.7.0",
@@ -22,10 +22,10 @@
         "laravel-mix": "^1.0",
         "less": "^2.7.2",
         "less-loader": "^4.0.5",
-        "lodash": "^4.17.4",
+        "lodash": "^4.17.10",
         "vue": "^2.1.10",
         "vue-config": "^1.0.0",
-        "vue-jsonp": "^0.1.6",
+        "vue-jsonp": "^0.1.8",
         "vuex": "^2.4.0"
     }
 }
