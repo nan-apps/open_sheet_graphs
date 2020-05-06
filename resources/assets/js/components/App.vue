@@ -6,10 +6,10 @@
 			<div class="navbar-brand has-text-centered-touch">
 			    
 			    <a class="navbar-item container is-hidden-desktop" href="/">
-			      	<b class="title" >Padrón de femicidios</b>		      	
+			      	<b class="title" >Padrón de femicidios 2020</b>		      	
 			    </a>
 			    <a class="navbar-item is-hidden-touch" href="/">
-			      	<b class="title" >Padrón de femicidios</b>		      	
+			      	<b class="title" >Padrón de femicidios 2020</b>		      	
 			    </a>
 
 			    <button class="button navbar-burger is-hidden">
@@ -60,7 +60,7 @@
 			    		   :fetching-data="fetchingData"
 			    		   :show-legend="false" 
 			    		   :show-percents="false"
-			    		   :data-tresh-hold="20"				    		   
+			    		   :data-tresh-hold="1"				    		   
 			    		   >	      		
 
 
@@ -68,33 +68,33 @@
 
 			      	<chart title="Por lugar" 
 			    		   :chart-type="'bar'" 
-			    		   :data="getData('F')" 		
+			    		   :data="getData('E')" 		
 			    		   :fetching-data="fetchingData"
 			    		   :show-legend="false" 
 			    		   :show-percents="false"
-			    		   :data-tresh-hold="10"				    		   
+			    		   :data-tresh-hold="1"				    		   
 			    		   >
 			      	</chart>
 
 			      	<chart title="Cómo" 
+			    		   :chart-type="'pie'" 
+			    		   :data="getData('G')" 		
+			    		   :fetching-data="fetchingData"
+			    		   :show-legend="true" 
+			    		   :show-percents="true"
+			    		   :total-rows="totalRows"
+			    		   :data-tresh-hold="1"				    		   
+			    		   >
+			      	</chart>
+
+			      	<chart title="Quién" 
 			    		   :chart-type="'pie'" 
 			    		   :data="getData('H')" 		
 			    		   :fetching-data="fetchingData"
 			    		   :show-legend="true" 
 			    		   :show-percents="true"
 			    		   :total-rows="totalRows"
-			    		   :data-tresh-hold="10"				    		   
-			    		   >
-			      	</chart>
-
-			      	<chart title="Quién" 
-			    		   :chart-type="'pie'" 
-			    		   :data="getData('I')" 		
-			    		   :fetching-data="fetchingData"
-			    		   :show-legend="true" 
-			    		   :show-percents="true"
-			    		   :total-rows="totalRows"
-			    		   :data-tresh-hold="10"				    		   
+			    		   :data-tresh-hold="1"				    		   
 			    		   >	      		
 
 			      	</chart>
