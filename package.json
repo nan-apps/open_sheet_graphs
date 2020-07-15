@@ -22,7 +22,7 @@
         "laravel-mix": "^1.0",
         "less": "^2.7.2",
         "less-loader": "^4.0.5",
-        "lodash": "^4.17.4",
+        "lodash": "^4.17.19",
         "vue": "^2.1.10",
         "vue-config": "^1.0.0",
         "vue-jsonp": "^0.1.6",
