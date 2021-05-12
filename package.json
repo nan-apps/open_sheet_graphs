@@ -14,7 +14,7 @@
         "bootstrap-sass": "^3.3.7",
         "bulma": "^0.5.2",
         "bulma-tooltip": "0.0.4",
-        "chart.js": "^2.7.0",
+        "chart.js": "^2.9.4",
         "chartjs-plugin-datalabels": "^0.1.0",
         "cross-env": "^5.0.1",
         "font-awesome": "^4.7.0",
